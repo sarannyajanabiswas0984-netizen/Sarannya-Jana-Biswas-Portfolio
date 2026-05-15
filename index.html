@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sarannya Jana Biswas | Frontend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylsheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styl.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="c-dot"></div>
+  <div id="c-ring"></div>
+
+  <!-- Animated Background -->
+  <div class="bg-layer">
+    <canvas id="star-canvas"></canvas>
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+  </div>
+
+  <!-- ── NAVIGATION ── -->
+  <nav id="nav">
+    <ul class="nav-ul" id="nav-ul">
+      <li><a data-s="profile"      onclick="go('profile')"><span class="n">01.</span>Profile</a></li>
+      <li><a data-s="skills"       onclick="go('skills')"><span class="n">02.</span>Skills</a></li>
+      <li><a data-s="projects"     onclick="go('projects')"><span class="n">03.</span>Projects</a></li>
+      <li><a data-s="certificates" onclick="go('certificates')"><span class="n">04.</span>Certificates</a></li>
+      <li><a data-s="contact"      onclick="go('contact')"><span class="n">05.</span>Contact</a></li>
+    </ul>
+    <button class="ham" id="ham" onclick="mobToggle()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Overlay Menu -->
+  <div class="mob" id="mob">
+    <ul>
+      <li><a onclick="go('profile');      mobToggle()">Profile</a></li>
+      <li><a onclick="go('skills');       mobToggle()">Skills</a></li>
+      <li><a onclick="go('projects');     mobToggle()">Projects</a></li>
+      <li><a onclick="go('certificates'); mobToggle()">Certificates</a></li>
+      <li><a onclick="go('contact');      mobToggle()">Contact</a></li>
+    </ul>
+  </div>
+
+  <section id="profile-sec" class="sec on">
+
+    <!-- Left: Text Content -->
+    <div class="prof-left">
+
+      <div class="greeting">
+        <span class="greeting-line"></span>
+        <span class="greeting-text"></span>
+      </div>
+
+      <h1 class="prof-name">
+        <span class="n1">Sarannya</span>
+        <span class="n2">Jana Biswas</span>
+      </h1>
+
+      <div class="role-line">
+        <span class="rp">&#123;&nbsp;role:&nbsp;</span>
+        <span id="tw"></span>
+        <span class="cur">|</span>
+        <span class="rs">&nbsp;&#125;</span>
+      </div>
+
+      <div class="prof-about">
+        <p>
+          I'm a <strong>2nd year BCA student</strong> with a genuine passion for frontend
+          development. I love turning ideas into clean, interactive web experiences that
+          people actually enjoy using.
+        </p>
+        <p>
+          I focus on writing <strong>readable, well-structured code</strong> and designing
+          interfaces that feel natural and responsive across every device.
+          Always learning, always building.
+        </p>
+      </div>
+
+      <div class="prof-btns">
+        <button class="btn btn-fill" onclick="go('projects')">
+          View My Work <i class="fas fa-arrow-right"></i>
+        </button>
+        <button class="btn btn-out" onclick="go('contact')">
+          Get In Touch
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Right: Animated ID Card -->
+    <div class="prof-right">
+      <div class="id-card">
+        <div class="id-avatar">
+          <i class="fas fa-user-astronaut"></i>
+        </div>
+        <p class="id-name">Sarannya Jana Biswas</p>
+        <p class="id-title">Frontend Developer</p>
+        <div class="id-tags">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+          <span class="purple">React JS</span>
+          <span class="purple">BCA 2nd Year</span>
+        </div>
+        <div class="id-status">
+          <span class="status-dot"></span>
+          Available for opportunities
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="skills-sec" class="sec">
+
+    <div class="sh">
+      <span class="sh-tag">// expertise</span>
+      <h2 class="sh-title">My Skills</h2>
+      <p class="sh-sub">The tools I work with and the strengths I bring to every project.</p>
+    </div>
+
+    <div class="tab-row">
+      <button class="tab on" id="t-tech" onclick="renderSkills('tech')">
+        <i class="fas fa-code"></i> Technical
+      </button>
+      <button class="tab" id="t-soft" onclick="renderSkills('soft')">
+        <i class="fas fa-star"></i> Soft Skills
+      </button>
+    </div>
+
+    <div id="sk-display" class="sk-grid"></div>
+
+  </section>
+
+  <section id="projects-sec" class="sec">
+
+    <div class="sh">
+      <span class="sh-tag">// work</span>
+      <h2 class="sh-title">My Projects</h2>
+      <p class="sh-sub">Things I've built while learning and growing as a developer.</p>
+    </div>
+
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-icon"><i class="fas fa-dumbbell"></i></div>
+          <a href="https://github.com/sarannyajanabiswas0984-netizen" target="_blank" class="proj-gh">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+        <h3 class="proj-name">Gym Management System</h3>
+        <p class="proj-desc">
+          A fully responsive web application to manage gym members, track schedules,
+          and handle administrative tasks — built entirely with vanilla web technologies.
+        </p>
+        <div class="proj-tags">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+        </div>
+      </div>
+
+      <div class="proj-card proj-soon">
+        <div class="proj-soon-inner">
+          <i class="fas fa-rocket"></i>
+          <p>More projects coming soon...</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="certificates-sec" class="sec">
+
+    <div class="sh">
+      <span class="sh-tag">// achievements</span>
+      <h2 class="sh-title">Certificates</h2>
+      <p class="sh-sub">Recognition earned through learning and hands-on participation.</p>
+    </div>
+
+    <div class="cert-grid">
+
+      <div class="cert-card">
+        <div class="cert-ico"><i class="fas fa-users"></i></div>
+        <div class="cert-info">
+          <h3>Basic Team Skill</h3>
+          <p>
+            Completed a program focused on effective teamwork, communication within groups,
+            and building collaborative working habits in professional environments.
+          </p>
+        </div>
+        <div class="cert-glow"></div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-ico"><i class="fas fa-user-tie"></i></div>
+        <div class="cert-info">
+          <h3>Personal Grooming &amp; Development</h3>
+          <p>
+            A transformative course covering professional presentation, personal branding,
+            and the mindset shifts needed for long-term personal growth.
+          </p>
+        </div>
+        <div class="cert-glow"></div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-ico"><i class="fas fa-lightbulb"></i></div>
+        <div class="cert-info">
+          <h3>AIGNITE — Startup Ideation</h3>
+          <p>
+            Participated in a competitive startup ideation challenge where I pitched
+            an original business concept in an AI-driven, innovation-focused environment.
+          </p>
+        </div>
+        <div class="cert-glow"></div>
+      </div>
+
+    </div>
+
+    <div class="li-cta">
+      <div class="li-cta-left">
+        <i class="fab fa-linkedin"></i>
+        <div>
+          <h4>View full credentials</h4>
+          <p>All certificates with verifications are on my LinkedIn profile.</p>
+        </div>
+      </div>
+      <a href="https://www.linkedin.com/in/sarannya-jana-biswas-6b24b5351" target="_blank" class="btn btn-fill">
+        LinkedIn Profile <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+
+  </section>
+
+  <section id="contact-sec" class="sec">
+
+    <div class="sh">
+      <span class="sh-tag">// connect</span>
+      <h2 class="sh-title">Get In Touch</h2>
+      <p class="sh-sub">
+        Open to collaborations, internships, or just a friendly conversation about web development.
+      </p>
+    </div>
+
+    <div class="con-wrap">
+      <div class="con-list">
+
+        <a href="mailto:sarannyajanabiswas0984@gmail.com" class="con-card">
+          <div class="con-ico"><i class="fas fa-envelope"></i></div>
+          <div class="con-meta">
+            <span class="con-lbl">Email</span>
+            <span class="con-val">sarannyajanabiswas0984@gmail.com</span>
+          </div>
+          <i class="fas fa-arrow-right con-arr"></i>
+        </a>
+
+        <a href="tel:+919732928320" class="con-card">
+          <div class="con-ico"><i class="fas fa-phone"></i></div>
+          <div class="con-meta">
+            <span class="con-lbl">Phone</span>
+            <span class="con-val">+91 97329 28320</span>
+          </div>
+          <i class="fas fa-arrow-right con-arr"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/sarannya-jana-biswas-6b24b5351" target="_blank" class="con-card">
+          <div class="con-ico"><i class="fab fa-linkedin"></i></div>
+          <div class="con-meta">
+            <span class="con-lbl">LinkedIn</span>
+            <span class="con-val">sarannya-jana-biswas</span>
+          </div>
+          <i class="fas fa-arrow-right con-arr"></i>
+        </a>
+
+        <a href="https://github.com/sarannyajanabiswas0984-netizen" target="_blank" class="con-card">
+          <div class="con-ico"><i class="fab fa-github"></i></div>
+          <div class="con-meta">
+            <span class="con-lbl">GitHub</span>
+            <span class="con-val">sarannyajanabiswas0984-netizen</span>
+          </div>
+          <i class="fas fa-arrow-right con-arr"></i>
+        </a>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span>Designed &amp; Built by <em>Sarannya Jana Biswas</em></span>
+    <span>© 2026</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
